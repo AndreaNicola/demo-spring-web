@@ -1,0 +1,25 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Salutatore</title>
+</head>
+
+<body>
+
+<h1 th:if="${ message == null || message.isEmpty()}">Hello</h1>
+<h1 th:if="${ message != null && ! message.isEmpty()}" th:text="'Hello, ' + ${message}"></h1>
+
+<form action="/" method="POST">
+    <input type="text" name="message" th:value="${message}"/>
+    <input type="submit">
+</form>
+
+
+<h2>Vecchi saluti</h2>
+<ul>
+    <li th:each="saluto: ${vecchiSaluti}" th:text="'Hello, ' + ${saluto}"></li>
+</ul>
+
+
+</body>
+</html>
