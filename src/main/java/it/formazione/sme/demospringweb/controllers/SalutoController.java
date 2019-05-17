@@ -18,21 +18,21 @@ public class SalutoController {
     this.salutoService = salutoService;
   }
 
-  @RequestMapping(path = "/", method = RequestMethod.GET)
+  @RequestMapping(path = "/saluto", method = RequestMethod.GET)
   public String index1(Model model) {
     Set<String> vecchiSaluti = salutoService.list();
     model.addAttribute("vecchiSaluti", vecchiSaluti);
-    return "index";
+    return "saluto";
   }
 
-  @RequestMapping(path = "/", method = RequestMethod.POST)
+  @RequestMapping(path = "/saluto", method = RequestMethod.POST)
   public ModelAndView index2(String message) {
     salutoService.addSaluto(message);
     Set<String> vecchiSaluti = salutoService.list();
     ModelAndView modelAndView = new ModelAndView();
     modelAndView.addObject("vecchiSaluti", vecchiSaluti);
     modelAndView.addObject("message", message);
-    modelAndView.setViewName("index");
+    modelAndView.setViewName("saluto");
     return modelAndView;
   }
 
